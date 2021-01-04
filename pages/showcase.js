@@ -1,27 +1,15 @@
 import Head from 'next/head'
 import React, { useState } from 'react';
-import Layout, { siteTitle } from '../components/layout'
-import { getSortedPostsData } from '../lib/posts'
+import { siteTitle } from '../components/layout'
 import styles from '../styles/utils.module.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import Image from 'react-bootstrap/Image'
-import Link from 'next/link'
 import Carousel from 'react-bootstrap/Carousel'
 import Accordion from 'react-bootstrap/Accordion'
 import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
-
-export async function getStaticProps(props) {
-  const allPostsData = getSortedPostsData()
-  return {
-    props: {
-      allPostsData
-    }
-  }
-}
 
 const carouselItems = (images, projectName, screenSize)=>{
     return images[projectName].map(imageUrl =>{
@@ -35,36 +23,9 @@ const carouselItems = (images, projectName, screenSize)=>{
     })
 }
 
-const renderBlogPosts = (allPostsData, startNum, theme) => {
-    let count = startNum;
-    return allPostsData.map(postData =>{
-        count += 1
-        if(count - startNum <= 5 ){
-            return(
-                <Row key={allPostsData[count-1].id}>
-                    <Col xs={3}>
-                        <figure>
-                            <Image src={`/images/Blogpost-thumb.jpg`} className="img img-fluid"/>
-                        </figure>
-                    </Col>
-                    <Col xs={9}>
-                        <figcaption className="h6">
-                            <Link href={`/posts/${allPostsData[count-1].id}`}>
-                                <a className={`${theme ? 'text-light' : 'text-dark'}`}>{allPostsData[count-1].title}</a>
-                            </Link>
-                        </figcaption>
-                    </Col>
-                </Row>
-            )
-        }
-    })
-}
-
-
-export default function Home( props ) {
+export default function Showcase( props ) {
     const [accordionOneOpen, setAccordionOneOpen] = useState(false);
     const [accordionTwoOpen, setAccordionTwoOpen] = useState(false);
-    //const [innerWidth, setInnerWidth] = useState(window.innerWidth);
 
     const images = {
         smslive247: ["smslive-desktop-1.png", "smslive-desktop-2.png","smslive-mobile-1.png", "smslive-mobile-2.png"],
@@ -77,68 +38,6 @@ export default function Home( props ) {
             <title>{siteTitle}</title>
         </Head>
         <main className={`pb-5 ${props.darkTheme ? 'text-light' : 'text-dark'}`} style={{backgroundColor: `${props.darkTheme ? '#343a40' : '#f7f7f7'}`}}>
-                {/* Homepage Banner */}
-                <Container fluid className={`${props.darkTheme ? styles.bannerImageDark : styles.bannerImageLight} mb-5`}>
-                    <Row className="h-100">
-                        <Col sm={{ span: 8, offset: 4 }} lg={{span: 6, offset: 5}} className={`d-none d-sm-flex align-items-center ${props.darkTheme ? 'text-light' : 'text-dark'}`}>
-                            <Image src="/images/profile-2.jpeg" className="ml-auto" style={{maxWidth: "200px"}}/>
-                            <p className={styles.bannerText}>
-                                <span style={{fontSize:"50px"}}>Hi</span> <br />
-                                I<span style={{fontSize:"45px"}}>'m Daniel</span><br />
-                                I<span style={{fontSize:"40px"}}>'m a Writer</span><br /> 
-                                I <span style={{fontSize:"35px"}}>Write Code</span><br />
-                                I<span style={{fontSize:"30px"}}>'m a JS Developer</span><br />
-                                <span className="d-inline"><img src="/images/my-js-stack.png" className="d-inline m-0 p-0"/> </span> <br/>
-                                I <span style={{fontSize:"25px"}}>Write Blogs</span><br />
-                                I <span style={{fontSize:"20px"}}>Write Poems</span><br />
-                            </p>
-                        </Col>
-                        <Col xs={12} sm={{ span: 9, offset: 3 }} className={`d-flex d-sm-none align-items-center ${props.darkTheme ? 'text-light' : 'text-dark'}`}>
-                            <Image src="/images/profile-2.jpeg" className="ml-auto" style={{maxWidth: "100px"}}/>
-                            <p className={styles.bannerText} style={{fontSize: "40px"}}>
-                                <span style={{fontSize:"40px"}}>Hi</span> <br />
-                                I<span style={{fontSize:"35px"}}>'m Daniel</span><br />
-                                I<span style={{fontSize:"30px"}}>'m a Writer</span><br /> 
-                                I <span style={{fontSize:"25px"}}>Write Code</span><br />
-                                I<span style={{fontSize:"20px"}}>'m a JS Developer</span><br />
-                                <span className="d-inline"><img src="/images/my-js-stack-sm.png" className="d-inline m-0 p-0"/> </span> <br/>
-                                I <span style={{fontSize:"18px"}}>Write Blogs</span><br />
-                                I <span style={{fontSize:"15px"}}>Write Poems</span><br />
-                            </p>
-                        </Col>
-                    </Row>
-                </Container>
-
-                {/*MY STORY */}
-                <Container className="mb-5">
-                    <Row>
-                        <Col xs={12}>
-                            <header>
-                                <h3>My Story</h3>
-                            </header>
-                        </Col>
-                        <Col md={12} className={`pt-2 ${props.darkTheme ? 'bg-dark' : 'bg-light'}`}>
-                            <article className="row">
-                                <p className="col-md-11 col-lg-10">
-                                    This is my Story. I'm about to tell how I got into programming and my journey ever since. 
-                                </p>
-                                <h6 className="col-md-11 col-lg-10">First contact with Programming</h6>
-                                <p className="col-md-11 col-lg-10">
-                                    I was in secondary school at that time about to write my final year exams. It was a time where everyone
-                                    talked about their big dreams, their career choices (doctors, lawyers, pilots), everyone seemed to know
-                                    how they would be spending the next five to six years, everyone except me. <br/>
-                                        I didn't exactly know of any career that interested me except I wanted to be a poet. But I didn't tell anyone.
-                                    Nobody wanted to hear that. I loved education, I loved to learn, but I didn't like the school system in Nigeria. It
-                                    was turture for me so I didn't want to go to the university
-                                </p>
-                                <p className="col-md-11 col-lg-10">
-                                    <a>Read More</a>
-                                </p>
-                            </article>
-                        </Col>
-                    </Row>
-                </Container>
-
                 {/*SHOWCASE */}
                 <Container className="mb-5">
                     {/*SHOWCASE INTRO SECTION */}
@@ -249,31 +148,6 @@ export default function Home( props ) {
                                     </Accordion.Collapse>
                                 </Card>
                             </Accordion>
-                        </Col>
-                    </Row>
-                    
-                    {/* VIEW MORE PROJECTS SECTION */}
-                    <Row>
-                        <Col>
-                            <Button variant="link outline-secondary" size="md">
-                                View More Projects &gt;
-                        </Button>
-                        </Col>
-                    </Row>
-                </Container>
-
-                <Container className="mb-5">
-                    <Row>
-                        <Col xs={12}>
-                            <header>
-                                <h3 className={`${props.darkTheme ? 'text-light' : 'text-dark'}`}>Blog</h3>
-                            </header>
-                        </Col>
-                        <Col sm={6}>
-                            {renderBlogPosts(props.allPostsData, 0, props.darkTheme)}
-                        </Col>
-                        <Col sm={6}>
-                            {renderBlogPosts(props.allPostsData, 5, props.darkTheme)}
                         </Col>
                     </Row>
                 </Container>

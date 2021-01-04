@@ -1,23 +1,25 @@
 import Head from 'next/head'
 import styles from './layout.module.css'
 import utilStyles from '../styles/utils.module.css'
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Form from 'react-bootstrap/Form'
 import Container from 'react-bootstrap/Container'
 
-//const name = 'Daniel'
-export const siteTitle = 'Niger Delta News Blog'
+export const siteTitle = 'Daniel Nwokocha'
 
-export default function Layout({ children }) {
+export default function Layout( props ) {
+  //const [darkTheme, setDarkTheme] = useState(false);
+
     return (
       <div>
         <Head>
           <link rel="icon" href="/favicon.ico" />
           <meta
             name="description"
-            content="Niger Delta News Blog"
+            content="Daniel Nwokocha Portfolio website"
           />
           <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" 
           integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossOrigin="anonymous"></link>
@@ -33,89 +35,60 @@ export default function Layout({ children }) {
 
 
 
-          <Navbar collapseOnSelect expand="lg" className="border-bottom sticky-top mb-4" bg="dark" variant="dark">
-            <Link href="/">
-              <a><Navbar.Brand>News Blog</Navbar.Brand></a>
-            </Link>
-            
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-            <Navbar.Collapse id="responsive-navbar-nav">
-              <Nav className="mr-auto">
-                <Link href="/politics">
-                  <a className={`${styles.navLink} text-light nav-link`}>Politics</a>
-                </Link>
-                <Link href="/business">
-                  <a className={`${styles.navLink} text-light nav-link`}>Business</a>
-                </Link>
-                <Link href="/local">
-                  <a className={`${styles.navLink} text-light nav-link`}>Local News</a>
-                </Link>
-                <Link href="/health">
-                  <a className={`${styles.navLink} text-light nav-link`}>Health</a>
-                </Link>
-                <Link href="/sports">
-                  <a className={`${styles.navLink} text-light nav-link`}>Sports</a>
-                </Link>
-                <Link href="/entertainment">
-                  <a className={`${styles.navLink} text-light nav-link`}>Entertainment</a>
-                </Link>
-                <Link href="/style">
-                  <a className={`${styles.navLink} text-light nav-link`}>Style</a>
-                </Link>
-              </Nav>
-              <Nav>
-                <button className="btn btn-sm btn-secondary mr-2">
-                  <Link href="/newPost">
-                    <a className="text-light small">New Post</a>
-                  </Link>
-                </button>
-                <Form>
-                  <Form.Check
-                    className={`${styles.navLink} text-secondary mt-1`}
-                    type="switch"
-                    id="custom-switch"
-                    label="Dark Mode"
-                  />
-                </Form>
-              </Nav>
-            </Navbar.Collapse>
-          </Navbar>
+        <Navbar collapseOnSelect expand="md" className={`sticky-top`} style={{ backgroundColor: `${props.darkTheme ? '#343a40' : '#f3f3f3'}`}} variant={`${props.darkTheme ? 'dark' : 'light'}`}>
+          <Link href="/">
+            <a><Navbar.Brand className={`${props.darkTheme ? 'text-light' : 'text-dark'} font-weight-bold`}> &lt;Daniel Nwokocha/&gt;</Navbar.Brand></a>
+          </Link>
 
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="mx-auto">
+              {/* <Link href="/politics">
+                <a className={`${props.darkTheme ? 'text-light' : 'text-dark'} nav-link font-weight-bolder`} style={{fontSize: "16px"}}>My Story</a>
+              </Link> */}
+              <Link href="/politics">
+                <a className={`${props.darkTheme ? 'text-light' : 'text-dark'} nav-link font-weight-bolder`} style={{fontSize: "16px"}}>My Resume</a>
+              </Link>
+              <Link href="/business">
+                <a className={`${props.darkTheme ? 'text-light' : 'text-dark'} nav-link font-weight-bolder`} style={{fontSize: "16px"}}>Showcase</a>
+              </Link>
+              <Link href="/blog">
+                <a className={`${props.darkTheme ? 'text-light' : 'text-dark'} nav-link font-weight-bolder`} style={{fontSize: "16px"}}>Blog</a>
+              </Link>
+            </Nav>
+            <Nav className="ml-4 pl-2 ml-md-0 pl-md-0">
+              <Form>
+                <Form.Check
+                  className={`${props.darkTheme ? 'text-light' : 'text-dark'} nav-link font-weight-bolder`}
+                  style={{fontSize: "16px"}}
+                  type="switch"
+                  id="custom-switch"
+                  label="Dark Mode"
+                  onClick={()=>{props.toggleDarkTheme(!props.darkTheme)}}
+                />
+              </Form>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
 
-        <main>
-          <Container>
-            {children}
-          </Container>
-        </main>
+            {props.children}
 
-
-
-        
-        <footer className="bg-dark text-light mb-0 py-2">
+        <footer style={{ backgroundColor: `${props.darkTheme ? '#343a40' : '#f3f3f3'}` }} className={`${props.darkTheme ? 'text-light' : 'text-dark'} mb-0 py-2 border-top`}>
           <Nav className="justify-content-center">
             <Nav.Item>
-              <Nav.Link href="/home" className="small text-light">Politics</Nav.Link>
+              <Nav.Link href="/home" className={`small ${props.darkTheme ? 'text-light' : 'text-dark'}`}>My Story</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link href="/home" className="small text-light">Business</Nav.Link>
+              <Nav.Link href="/home" className={`small ${props.darkTheme ? 'text-light' : 'text-dark'}`}>My Resume</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link href="/home" className="small text-light">Local News</Nav.Link>
+              <Nav.Link href="/home" className={`small ${props.darkTheme ? 'text-light' : 'text-dark'}`}>Blog</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link href="/home" className="small text-light">Health</Nav.Link>
+              <Nav.Link href="/home" className={`small ${props.darkTheme ? 'text-light' : 'text-dark'}`}>Showcase</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link href="/home" className="small text-light">Sports</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="/home" className="small text-light">Entertainment</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="/home" className="small text-light">Style</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-            <Nav.Link href="" className="small text-light">&copy;{new Date().getFullYear()} Niger Delta News Blog</Nav.Link>
+              <Nav.Link href="" className={`small ${props.darkTheme ? 'text-light' : 'text-dark'}`}>&copy;{new Date().getFullYear()} Daniel Nwokocha</Nav.Link>
             </Nav.Item>
           </Nav>
         </footer>

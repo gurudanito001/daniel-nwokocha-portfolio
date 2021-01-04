@@ -34,10 +34,10 @@ export async function getStaticProps() {
     )
 }
 
-export default function NewPost( ) {
+export default function NewPost( props ) {
   const [title, setTitle] = useState('');
   return (
-    <Layout>
+    <Layout darkTheme={props.darkTheme} setDarkTheme={props.setDarkTheme}>
       <Head>
         <title>{siteTitle}</title>
       </Head>
@@ -56,7 +56,7 @@ export default function NewPost( ) {
                 value={title}
                 placeholder="Enter Title" />
             </Form.Group>
-            <Form.Label className="h6">Category</Form.Label>
+            <Form.Label className={props.darkTheme ? 'h6': 'h4'} onClick={()=>{props.setDarkTheme(!props.darkTheme)}}>Category</Form.Label>
             <Row>
                 <Col></Col>
             </Row>

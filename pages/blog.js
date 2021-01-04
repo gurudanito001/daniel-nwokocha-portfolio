@@ -8,6 +8,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
 export async function getStaticProps() {
+  
   const allPostsData = getSortedPostsData()
   return {
     props: {
@@ -18,47 +19,38 @@ export async function getStaticProps() {
 
 
 
-export default function Politics( {allPostsData} ) {
+export default function Home( {allPostsData} ) {
 
   const renderCategoryBlogPosts = (category) =>{
     let count = 0;
     return allPostsData.map(postData =>{
-      if(postData.category.includes(category) && count < 12 ){
+      if(postData.category.includes(category) && count < 5 ){
         if(count === 0){
           count += 1;
           return (
-            <Col xs={12} md={8}>
-                <div className="border-bottom mx-1 py-1" key={postData.id}>
-                    <figure className="jumbotron mb-2 py-4 px-3">
-                        <h4>This is the Latest {category} Story</h4>
-                    </figure>
-                    <figcaption>
-                        <h5>
-                        <Link href={`/posts/${postData.id}`}>
-                            <a className="text-dark">{postData.title}</a>
-                        </Link>
-                        </h5>
-                    </figcaption>
-                </div>
-            </Col>
+            <div className="border-bottom py-1" key={postData.id}>
+              <figure className="jumbotron mb-2 py-4 px-3">
+                <h4>This is the Latest {category} Story</h4>
+              </figure>
+              <figcaption>
+                <h6>
+                  <Link href={`/posts/${postData.id}`}>
+                    <a className="text-dark">{postData.title}</a>
+                  </Link>
+                </h6>
+              </figcaption>
+            </div>
           )
         }else{
           count += 1;
           return (
-            <Col xs={12} md={4}>
-                <div className="border-bottom mx-1 py-1" key={postData.id}>
-                    <figure className="jumbotron mb-2 py-4 px-3">
-                        <h5>This is another {category} Story</h5>
-                    </figure>
-                    <figcaption>
-                        <h6>
-                        <Link href={`/posts/${postData.id}`}>
-                            <a className="text-dark">{postData.title}</a>
-                        </Link>
-                        </h6>
-                    </figcaption>
-                </div>
-            </Col>
+            <div className="border-bottom py-1" key={postData.id}>
+              <h6 className="font-weight-light" style={{ fontSize: '.9rem' }}>
+                <Link href={`/posts/${postData.id}`}>
+                  <a>{postData.title}</a>
+                </Link>
+              </h6>
+            </div>
           )
         }
       }
@@ -78,7 +70,7 @@ export default function Politics( {allPostsData} ) {
             </div>
             <h4>
               <Link href={`/posts/${postData.id}`}>
-                <a>{postData.title}</a>
+                <a className="text-dark">{postData.title}</a>
               </Link>
             </h4>
           </Carousel.Item>  
@@ -116,41 +108,66 @@ export default function Politics( {allPostsData} ) {
         <title>{siteTitle}</title>
       </Head>
       <header>
-        <h5>Politics</h5>
+        <h5>Top Stories</h5>
       </header>
-
       <Row className="mb-3">
-          {renderCategoryBlogPosts("politics")}
+        <Col xs={12} md={8}>
+          <Carousel indicators={false}>
+            {renderTopStoryBlogPosts()}
+          </Carousel>
+        </Col>
+        <Col xs={12} md={4}>
+          {renderTopStoryListBlogPosts()}
+        </Col>
       </Row>
 
-      {/* <Row className="mb-3">
+      <Row className="mb-3">
+        <Col xs={12} md={4}>
+          <header className="card-header p-2">
+            <h6 className="mb-0 font-weight-bold">Politics</h6>
+          </header>
+          {renderCategoryBlogPosts("politics")}
+        </Col>
+        <Col xs={12} md={4}>
+          <header className="card-header p-2">
+            <h6 className="mb-0 font-weight-bold">Business</h6>
+          </header>
+          {renderCategoryBlogPosts("business")}
+        </Col>
+        <Col xs={12} md={4}>
+          <header className="card-header p-2">
+            <h6 className="mb-0 font-weight-bold">Local News</h6>
+          </header>
+          {renderCategoryBlogPosts("local")}
+        </Col>
+      </Row>
+
+      <Row className="mb-3">
         <Col xs={12} md={3}>
-          <header>
-            <h5>Health</h5>
+          <header className="card-header p-2">
+            <h6 className="mb-0 font-weight-bold">Health</h6>
           </header>
           {renderCategoryBlogPosts("health")}
         </Col>
         <Col xs={12} md={3}>
-          <header>
-            <h5>Sports</h5>
+          <header className="card-header p-2">
+            <h6 className="mb-0 font-weight-bold">Sports</h6>
           </header>
           {renderCategoryBlogPosts("sports")}
         </Col>
         <Col xs={12} md={3}>
-          <header>
-            <h5>Entertainment</h5>
+          <header className="card-header p-2">
+            <h6 className="mb-0 font-weight-bold">Entertainment</h6>
           </header>
           {renderCategoryBlogPosts("entertainment")}
         </Col>
         <Col xs={12} md={3}>
-          <header>
-            <h5>Style</h5>
+          <header className="card-header p-2">
+            <h6 className="mb-0 font-weight-bold">Style</h6>
           </header>
           {renderCategoryBlogPosts("style")}
         </Col>
-      </Row> */}
+      </Row>
     </Layout>
-
-
   )
 }

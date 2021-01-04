@@ -1,8 +1,9 @@
----
-title: 'This is a Style Story'
-date: '2020-12-25'
-category: ['style', 'topStory']
----
+
+    ---
+    title: 'This is a Style Story'
+    date: '2020-12-25'
+    category: ['style', 'topStory']
+    ---
   
   Next.js has two forms of pre-rendering: **Static Generation** and **Server-side Rendering**. The difference is in **when** it generates the HTML for a page.
   

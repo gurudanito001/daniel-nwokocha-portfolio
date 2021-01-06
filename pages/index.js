@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout, { siteTitle } from '../components/layout'
 import { getSortedPostsData } from '../lib/posts'
 import styles from '../styles/utils.module.css'
@@ -62,10 +62,10 @@ const renderBlogPosts = (allPostsData, startNum, theme) => {
 
 
 export default function Home( props ) {
+    
     const [accordionOneOpen, setAccordionOneOpen] = useState(false);
     const [accordionTwoOpen, setAccordionTwoOpen] = useState(false);
-    //const [innerWidth, setInnerWidth] = useState(window.innerWidth);
-
+    
     const images = {
         smslive247: ["smslive-desktop-1.png", "smslive-desktop-2.png","smslive-mobile-1.png", "smslive-mobile-2.png"],
         stocktaker: ["stocktaker-desktop-1.png","stocktaker-desktop-2.png","stocktaker-desktop-3.png","stocktaker-desktop-4.png","stocktaker-desktop-5.png","stocktaker-desktop-6.png","stocktaker-mobile-1.png","stocktaker-mobile-2.png","stocktaker-mobile-3.png","stocktaker-mobile-4.png"]
@@ -73,37 +73,38 @@ export default function Home( props ) {
 
   return (
     <>
-        <Head>
-            <title>{siteTitle}</title>
-        </Head>
-        <main className={`pb-5 ${props.darkTheme ? 'text-light' : 'text-dark'}`} style={{backgroundColor: `${props.darkTheme ? '#343a40' : '#f7f7f7'}`}}>
+        <Layout theme={props.theme} toggleTheme={props.toggleTheme}>
+            <Head>
+                <title>{siteTitle}</title>
+            </Head>
+            <main className={`pb-5 ${props.theme === "dark" ? 'text-light' : 'text-dark'}`} style={{ backgroundColor: `${props.theme === "dark" ? '#343a40' : '#f7f7f7'}` }}>
                 {/* Homepage Banner */}
-                <Container fluid className={`${props.darkTheme ? styles.bannerImageDark : styles.bannerImageLight} mb-5`}>
+                <Container fluid className={`${props.theme === "dark" ? styles.bannerImageDark : styles.bannerImageLight} mb-5`}>
                     <Row className="h-100">
-                        <Col sm={{ span: 8, offset: 4 }} lg={{span: 6, offset: 5}} className={`d-none d-sm-flex align-items-center ${props.darkTheme ? 'text-light' : 'text-dark'}`}>
-                            <Image src="/images/profile-2.jpeg" className="ml-auto" style={{maxWidth: "200px"}}/>
+                        <Col sm={{ span: 8, offset: 4 }} lg={{ span: 6, offset: 5 }} className={`d-none d-sm-flex align-items-center ${props.theme === "dark" ? 'text-light' : 'text-dark'}`}>
+                            <Image src="/images/daniel-slim.png" className="ml-auto img img-fluid"  style={{ maxHeight: "500px" }} />
                             <p className={styles.bannerText}>
-                                <span style={{fontSize:"50px"}}>Hi</span> <br />
-                                I<span style={{fontSize:"45px"}}>'m Daniel</span><br />
-                                I<span style={{fontSize:"40px"}}>'m a Writer</span><br /> 
-                                I <span style={{fontSize:"35px"}}>Write Code</span><br />
-                                I<span style={{fontSize:"30px"}}>'m a JS Developer</span><br />
-                                <span className="d-inline"><img src="/images/my-js-stack.png" className="d-inline m-0 p-0"/> </span> <br/>
-                                I <span style={{fontSize:"25px"}}>Write Blogs</span><br />
-                                I <span style={{fontSize:"20px"}}>Write Poems</span><br />
+                                <span style={{ fontSize: "50px" }}>Hi</span> <br />
+                                I<span style={{ fontSize: "45px" }}>'m Daniel</span><br />
+                                I<span style={{ fontSize: "40px" }}>'m a Writer</span><br />
+                                I <span style={{ fontSize: "35px" }}>Write Code</span><br />
+                                I<span style={{ fontSize: "30px" }}>'m a JS Developer</span><br />
+                                N<span style={{ fontSize: "28px" }}>odeJs, ReactJs, NextJs</span><br />
+                                I <span style={{ fontSize: "25px" }}>Write Blogs</span><br />
+                                I <span style={{ fontSize: "20px" }}>Write Poems</span><br />
                             </p>
                         </Col>
-                        <Col xs={12} sm={{ span: 9, offset: 3 }} className={`d-flex d-sm-none align-items-center ${props.darkTheme ? 'text-light' : 'text-dark'}`}>
-                            <Image src="/images/profile-2.jpeg" className="ml-auto" style={{maxWidth: "100px"}}/>
-                            <p className={styles.bannerText} style={{fontSize: "40px"}}>
-                                <span style={{fontSize:"40px"}}>Hi</span> <br />
-                                I<span style={{fontSize:"35px"}}>'m Daniel</span><br />
-                                I<span style={{fontSize:"30px"}}>'m a Writer</span><br /> 
-                                I <span style={{fontSize:"25px"}}>Write Code</span><br />
-                                I<span style={{fontSize:"20px"}}>'m a JS Developer</span><br />
-                                <span className="d-inline"><img src="/images/my-js-stack-sm.png" className="d-inline m-0 p-0"/> </span> <br/>
-                                I <span style={{fontSize:"18px"}}>Write Blogs</span><br />
-                                I <span style={{fontSize:"15px"}}>Write Poems</span><br />
+                        <Col xs={12} sm={{ span: 9, offset: 3 }} className={`d-flex d-sm-none align-items-center ${props.theme === "dark" ? 'text-light' : 'text-dark'}`}>
+                            <Image src="/images/daniel-slim.png" className="ml-auto" style={{ maxWidth: "100px" }} />
+                            <p className={styles.bannerText} style={{ fontSize: "40px" }}>
+                                <span style={{ fontSize: "40px" }}>Hi</span> <br />
+                                I<span style={{ fontSize: "35px" }}>'m Daniel</span><br />
+                                I<span style={{ fontSize: "30px" }}>'m a Writer</span><br />
+                                I <span style={{ fontSize: "25px" }}>Write Code</span><br />
+                                I<span style={{ fontSize: "20px" }}>'m a JS Developer</span><br />
+                                N<span style={{ fontSize: "18px" }}>odeJs, ReactJs, NextJs</span><br />
+                                I <span style={{ fontSize: "16px" }}>Write Blogs</span><br />
+                                I <span style={{ fontSize: "15px" }}>Write Poems</span><br />
                             </p>
                         </Col>
                     </Row>
@@ -117,20 +118,20 @@ export default function Home( props ) {
                                 <h3>My Story</h3>
                             </header>
                         </Col>
-                        <Col md={12} className={`pt-2 ${props.darkTheme ? 'bg-dark' : 'bg-light'}`}>
+                        <Col md={12} className={`pt-2 ${props.theme === "dark" ? 'bg-dark' : 'bg-light'}`}>
                             <article className="row">
                                 <p className="col-md-11 col-lg-10">
-                                    This is my Story. I'm about to tell how I got into programming and my journey ever since. 
-                                </p>
+                                    This is my Story. I'm about to tell how I got into programming and my journey ever since.
+                            </p>
                                 <h6 className="col-md-11 col-lg-10">First contact with Programming</h6>
                                 <p className="col-md-11 col-lg-10">
                                     I was in secondary school at that time about to write my final year exams. It was a time where everyone
                                     talked about their big dreams, their career choices (doctors, lawyers, pilots), everyone seemed to know
-                                    how they would be spending the next five to six years, everyone except me. <br/>
-                                        I didn't exactly know of any career that interested me except I wanted to be a poet. But I didn't tell anyone.
-                                    Nobody wanted to hear that. I loved education, I loved to learn, but I didn't like the school system in Nigeria. It
-                                    was turture for me so I didn't want to go to the university
-                                </p>
+                                how they would be spending the next five to six years, everyone except me. <br />
+                                    I didn't exactly know of any career that interested me except I wanted to be a poet. But I didn't tell anyone.
+                                Nobody wanted to hear that. I loved education, I loved to learn, but I didn't like the school system in Nigeria. It
+                                was turture for me so I didn't want to go to the university
+                            </p>
                                 <p className="col-md-11 col-lg-10">
                                     <a>Read More</a>
                                 </p>
@@ -149,47 +150,47 @@ export default function Home( props ) {
                             </header>
                             <p className="lead">
                                 The following is a list of some of the public projects I've built or made major contributions to during the course of my career.
-                            </p>
+                        </p>
                         </Col>
                     </Row>
 
                     {/* SMSLIVE247 SHOWCASE SECTION */}
                     <Row className="mb-4">
                         <Col xs={12}>
-                            <h5 style={{color: "rgb(189, 189, 189)"}}>SMSLIVE247 (<a href="http://new.smslive247.com" className="small">new.smslive247.com</a>)</h5>
+                            <h5 style={{ color: "rgb(189, 189, 189)" }}>SMSLIVE247 (<a href="http://new.smslive247.com" className="small">new.smslive247.com</a>)</h5>
                         </Col>
                         <Col md={9}>
                             <header className="d-block text-center">Desktop View</header>
                             <Carousel indicators={false}>
-                                {carouselItems(images, 'smslive247','desktop')}
+                                {carouselItems(images, 'smslive247', 'desktop')}
                             </Carousel>
                         </Col>
 
                         <Col md={3}>
                             <header className="d-block text-center">Mobile View</header>
                             <Carousel indicators={false}>
-                                {carouselItems(images, 'smslive247','mobile')}
+                                {carouselItems(images, 'smslive247', 'mobile')}
                             </Carousel>
                         </Col>
                         <Col xs={12}>
                             <Accordion className="border-0">
                                 <Card className="border-0 bg-transparent">
                                     <Accordion.Toggle as={Card.Header} eventKey="0" className="py-0 px-2" onClick={() => { setAccordionOneOpen(!accordionOneOpen) }}>
-                                        <a className={`btn btn-link bg-transparent ${props.darkTheme ? 'text-light' : 'text-dark'}`}>
+                                        <a className={`btn btn-link bg-transparent ${props.theme === "dark" ? 'text-light' : 'text-dark'}`}>
                                             Project Details <strong className="h6">{accordionOneOpen ? "-" : "+"}</strong>
                                         </a>
                                     </Accordion.Toggle>
                                     <Accordion.Collapse eventKey="0">
-                                        <Card.Body  className={`${props.darkTheme ? 'bg-secondary text-white' : 'bg-white text-dark'}`}>
+                                        <Card.Body className={`${props.theme === "dark" ? `${styles.bgDark2} text-white` : 'bg-white text-dark'}`}>
                                             <p ><a href="http://new.smslive247.com">new.smslive247.com</a> is a reconstruction of <a href="http://smslive247.com">smslive247.com</a>. It is a bulk SMS wholesale and retail
-                                            platform.
-                                            </p>
+                                        platform.
+                                        </p>
                                             <h6>Contributions</h6>
                                             <p>
-                                                I was responsible for developing a more user-frienly User Interface, making the platform responsive on
-                                            all devices.<br />
-                                            It is a dotnet application and the backend code was restructured by Nathan Omonmowo a colleague of mine
-                                            </p>
+                                                I was responsible for developing a more user-friendly Interface, making the platform responsive on
+                                        all devices.<br />
+                                        It is a dotnet application and the backend code was restructured by Nathan Omonmowo a colleague of mine
+                                        </p>
                                             <h6>Skills</h6>
                                             <p>HTML, CSS, Bootstrap and Javascript.</p>
                                             <h6>Project Duration</h6>
@@ -200,47 +201,47 @@ export default function Home( props ) {
                             </Accordion>
                         </Col>
                     </Row>
-                    
+
                     {/* STOCKTAKER SHOWCASE SECTION */}
                     <Row className="mb-2">
                         <Col xs={12}>
                             <h5>
-                                <a href="https://gurudanito001.github.io/Stocktaker-Frontend/" style={{color: "rgb(189, 189, 189)"}}>STOCKTAKER </a>
+                                <a href="https://gurudanito001.github.io/Stocktaker-Frontend/" style={{ color: "rgb(189, 189, 189)" }}>STOCKTAKER </a>
                             </h5>
                         </Col>
                         <Col md={9}>
                             <header className="d-block text-center">Desktop View</header>
                             <Carousel indicators={false}>
-                                {carouselItems(images, 'stocktaker','desktop')}
+                                {carouselItems(images, 'stocktaker', 'desktop')}
                             </Carousel>
                         </Col>
 
                         <Col md={3}>
                             <header className="d-block text-center">Mobile View</header>
                             <Carousel indicators={false}>
-                                {carouselItems(images, 'stocktaker','mobile')}
+                                {carouselItems(images, 'stocktaker', 'mobile')}
                             </Carousel>
                         </Col>
                         <Col xs={12}>
                             <Accordion className="border-0">
                                 <Card className="border-0 bg-transparent">
                                     <Accordion.Toggle as={Card.Header} eventKey="0" className="py-0 px-2" onClick={() => { setAccordionTwoOpen(!accordionTwoOpen) }}>
-                                        <a className={`text-light btn btn-link ${props.darkTheme ? 'text-light' : 'text-dark'}`}>
+                                        <a className={`text-light btn btn-link ${props.theme === "dark" ? 'text-light' : 'text-dark'}`}>
                                             Project Details <strong className="h6">{accordionTwoOpen ? "-" : "+"}</strong>
                                         </a>
                                     </Accordion.Toggle>
                                     <Accordion.Collapse eventKey="0">
-                                        <Card.Body className={`${props.darkTheme ? 'bg-secondary text-white' : 'bg-white text-dark'}`}>
+                                        <Card.Body className={`${props.theme === "dark" ? `${styles.bgDark2} text-white` : 'bg-white text-dark'}`}>
                                             <p >Stocktaker is an inventory and vehicle management software.<br />
-                                        It is a personal project. It was originally developed for a shipping company but it is currently undergoing major adaptations to suit a wide variety of businesses <br />
-                                        Frontend is currently hosted on gitub pages while backend is hosted on heroku
-                                        </p>
+                                    It is a personal project. It was originally developed for a shipping company but it is currently undergoing major adaptations to suit a wide variety of businesses <br />
+                                    Frontend is currently hosted on gitub pages while backend is hosted on heroku
+                                    </p>
                                             <h6>Contributions</h6>
                                             <p>
                                                 Stocktaker's backend and API was initially built with C# by Nathan Omonmowo before a rewrite was done by myself.
-                                            I rewrote the API with Nodejs, Express and mongodb as the database cloud service provider<br />
-                                            Frontend was built with React by me.
-                                        </p>
+                                        I rewrote the API with Nodejs, Express and mongodb as the database cloud service provider<br />
+                                        Frontend was built with React by me.
+                                    </p>
                                             <h6>Skills</h6>
                                             <p>MERN Stack (Mongodb, Express, Reactjs and Nodejs)</p>
                                             <h6>Project Duration</h6>
@@ -251,13 +252,15 @@ export default function Home( props ) {
                             </Accordion>
                         </Col>
                     </Row>
-                    
+
                     {/* VIEW MORE PROJECTS SECTION */}
                     <Row>
                         <Col>
                             <Button variant="link outline-secondary" size="md">
-                                View More Projects &gt;
-                        </Button>
+                                <Link href="/showcase">
+                                    <a>View More Projects &gt;</a>
+                                </Link>
+                            </Button>
                         </Col>
                     </Row>
                 </Container>
@@ -266,18 +269,19 @@ export default function Home( props ) {
                     <Row>
                         <Col xs={12}>
                             <header>
-                                <h3 className={`${props.darkTheme ? 'text-light' : 'text-dark'}`}>Blog</h3>
+                                <h3 className={`${props.theme === "dark" ? 'text-light' : 'text-dark'}`}>Blog</h3>
                             </header>
                         </Col>
                         <Col sm={6}>
-                            {renderBlogPosts(props.allPostsData, 0, props.darkTheme)}
+                            {renderBlogPosts(props.allPostsData, 0, props.theme === "dark")}
                         </Col>
                         <Col sm={6}>
-                            {renderBlogPosts(props.allPostsData, 5, props.darkTheme)}
+                            {renderBlogPosts(props.allPostsData, 5, props.theme === "dark")}
                         </Col>
                     </Row>
                 </Container>
             </main>
+        </Layout>
     </>
   )
 }

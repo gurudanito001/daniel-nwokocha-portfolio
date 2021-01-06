@@ -1,5 +1,5 @@
 ---
-title: 'This is the headline of a political story'
+title: 'This is the headline of a story'
 date: '2020-01-01'
 category: ['politics', 'topStory']
 ---

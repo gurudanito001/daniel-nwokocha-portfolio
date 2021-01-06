@@ -7,12 +7,13 @@ import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Form from 'react-bootstrap/Form'
 import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Image from 'react-bootstrap/Image'
 
 export const siteTitle = 'Daniel Nwokocha'
 
 export default function Layout( props ) {
-  //const [darkTheme, setDarkTheme] = useState(false);
-
     return (
       <div>
         <Head>
@@ -35,36 +36,34 @@ export default function Layout( props ) {
 
 
 
-        <Navbar collapseOnSelect expand="md" className={`sticky-top`} style={{ backgroundColor: `${props.darkTheme ? '#343a40' : '#f3f3f3'}`}} variant={`${props.darkTheme ? 'dark' : 'light'}`}>
+        <Navbar collapseOnSelect expand="md" className={`sticky-top`} style={{ backgroundColor: `${props.theme === "dark" ? '#343a40' : '#f3f3f3'}`}} variant={`${props.theme === "dark" ? 'dark' : 'light'}`}>
           <Link href="/">
-            <a><Navbar.Brand className={`${props.darkTheme ? 'text-light' : 'text-dark'} font-weight-bold`}> &lt;Daniel Nwokocha/&gt;</Navbar.Brand></a>
+            <a><Navbar.Brand className={`${props.theme === "dark" ? 'text-light' : 'text-dark'} font-weight-bold`}> &lt;Daniel Nwokocha/&gt;</Navbar.Brand></a>
           </Link>
 
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mx-auto">
-              {/* <Link href="/politics">
-                <a className={`${props.darkTheme ? 'text-light' : 'text-dark'} nav-link font-weight-bolder`} style={{fontSize: "16px"}}>My Story</a>
-              </Link> */}
-              <Link href="/politics">
-                <a className={`${props.darkTheme ? 'text-light' : 'text-dark'} nav-link font-weight-bolder`} style={{fontSize: "16px"}}>My Resume</a>
+              <Link href="/resume">
+                <a className={`${props.theme === "dark" ? 'text-light' : 'text-dark'} nav-link font-weight-bolder`} style={{fontSize: "16px"}}>My Resume</a>
               </Link>
-              <Link href="/business">
-                <a className={`${props.darkTheme ? 'text-light' : 'text-dark'} nav-link font-weight-bolder`} style={{fontSize: "16px"}}>Showcase</a>
+              <Link href="/showcase">
+                <a className={`${props.theme === "dark" ? 'text-light' : 'text-dark'} nav-link font-weight-bolder`} style={{fontSize: "16px"}}>Showcase</a>
               </Link>
               <Link href="/blog">
-                <a className={`${props.darkTheme ? 'text-light' : 'text-dark'} nav-link font-weight-bolder`} style={{fontSize: "16px"}}>Blog</a>
+                <a className={`${props.theme === "dark" ? 'text-light' : 'text-dark'} nav-link font-weight-bolder`} style={{fontSize: "16px"}}>Blog</a>
               </Link>
             </Nav>
             <Nav className="ml-4 pl-2 ml-md-0 pl-md-0">
               <Form>
                 <Form.Check
-                  className={`${props.darkTheme ? 'text-light' : 'text-dark'} nav-link font-weight-bolder`}
+                  className={`${props.theme === "dark" ? 'text-light' : 'text-dark'} nav-link font-weight-bolder`}
+                  checked={props.theme === "dark" ? true : false}
                   style={{fontSize: "16px"}}
                   type="switch"
                   id="custom-switch"
                   label="Dark Mode"
-                  onClick={()=>{props.toggleDarkTheme(!props.darkTheme)}}
+                  onChange={()=>{props.toggleTheme()}}
                 />
               </Form>
             </Nav>
@@ -73,24 +72,86 @@ export default function Layout( props ) {
 
             {props.children}
 
-        <footer style={{ backgroundColor: `${props.darkTheme ? '#343a40' : '#f3f3f3'}` }} className={`${props.darkTheme ? 'text-light' : 'text-dark'} mb-0 py-2 border-top`}>
-          <Nav className="justify-content-center">
+        <footer style={{ backgroundColor: `${props.theme === "dark" ? '#343a40' : '#f3f3f3'}`, fontSize: ".8rem" }} className={`${props.theme === "dark" ? 'text-light' : 'text-dark'} mb-0 py-2 border-top`}>
+          <Container>
+            <Row>
+              <Col xs={4} sm={3} md={{ span: 2, offset: 2}}>
+                <ul className="list-unstyled">
+                  <li>
+                    <Link href="/">
+                      <a className={`${props.theme === "dark" ? 'text-light' : 'text-dark'}`}>Homepage</a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/resume">
+                      <a className={`${props.theme === "dark" ? 'text-light' : 'text-dark'}`}>My Resume</a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/showcase">
+                      <a className={`${props.theme === "dark" ? 'text-light' : 'text-dark'}`}>Showcase</a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/">
+                      <a className={`${props.theme === "dark" ? 'text-light' : 'text-dark'}`}>Blog</a>
+                    </Link>
+                  </li>
+                </ul>
+              </Col>
+              <Col xs={8} sm={4} md={3}>
+                <ul className="list-unstyled">
+                  <li className="d-flex align-items-center mb-1">
+                    <Image src={`/images/github${props.theme === "dark" ? '-light' : ''}.svg`} width="15px" className="mr-1" />
+                    <a href="https://github.com/gurudanito001" className={`${props.theme === "dark" ? 'text-light' : 'text-dark'}`}>gurudanito001</a>
+                  </li>
+                  <li className="d-flex align-items-center mb-1">
+                    <Image src={`/images/twitter${props.theme === "dark" ? '-light' : ''}.svg`} width="15px" className="mr-1" />
+                    <a href="https://twitter.com/danielnwokocha9" className={`${props.theme === "dark" ? 'text-light' : 'text-dark'}`}>DanielNwokocha9</a>
+                  </li>
+                  <li className="d-flex align-items-center mb-1">
+                    <Image src={`/images/gmail${props.theme === "dark" ? '-light' : ''}.svg`} width="15px" className="mr-1" />
+                    <span className={`${props.theme === "dark" ? 'text-light' : 'text-dark'}`}>gurudanito001@gmail.com</span>
+                  </li>
+                  <li className="d-flex align-items-center">
+                    <Image src={`/images/phone-call${props.theme === "dark" ? '-light' : ''}.svg`} width="15px" className="mr-1" />
+                    <span className={`${props.theme === "dark" ? 'text-light' : 'text-dark'}`}>+2348140715723</span>
+                  </li>
+                </ul>
+              </Col>
+              <Col xs={12} sm={5} md={3}>
+                <p>
+                  This is a Personal Portfolio and Blog Website. All Content is original from the author.<br/>  
+                  All Rights Reserved <br/>
+                  <strong>&copy; {new Date().getFullYear()} Daniel Nwokocha</strong>
+                </p>
+              </Col>
+            </Row>
+          </Container>
+
+
+
+
+
+
+
+          {/* <Nav className="justify-content-center">
             <Nav.Item>
-              <Nav.Link href="/home" className={`small ${props.darkTheme ? 'text-light' : 'text-dark'}`}>My Story</Nav.Link>
+              <Nav.Link href="/home" className={`small ${props.theme === "dark" ? 'text-light' : 'text-dark'}`}>My Story</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link href="/home" className={`small ${props.darkTheme ? 'text-light' : 'text-dark'}`}>My Resume</Nav.Link>
+              <Nav.Link href="/resume" className={`small ${props.theme === "dark" ? 'text-light' : 'text-dark'}`}>My Resume</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link href="/home" className={`small ${props.darkTheme ? 'text-light' : 'text-dark'}`}>Blog</Nav.Link>
+              <Nav.Link href="/home" className={`small ${props.theme === "dark" ? 'text-light' : 'text-dark'}`}>Blog</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link href="/home" className={`small ${props.darkTheme ? 'text-light' : 'text-dark'}`}>Showcase</Nav.Link>
+              <Nav.Link href="/home" className={`small ${props.theme === "dark" ? 'text-light' : 'text-dark'}`}>Showcase</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link href="" className={`small ${props.darkTheme ? 'text-light' : 'text-dark'}`}>&copy;{new Date().getFullYear()} Daniel Nwokocha</Nav.Link>
+              <Nav.Link href="" className={`small ${props.theme === "dark" ? 'text-light' : 'text-dark'}`}>&copy;{new Date().getFullYear()} Daniel Nwokocha</Nav.Link>
             </Nav.Item>
-          </Nav>
+          </Nav> */}
         </footer>
       </div>
     )

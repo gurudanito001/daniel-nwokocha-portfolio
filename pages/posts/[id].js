@@ -4,6 +4,7 @@ import Head from 'next/head'
 import Date from '../../components/date'
 import utilStyles from '../../styles/utils.module.css'
 import { Container, Row, Col } from 'react-bootstrap'
+import Image from 'react-bootstrap/Image'
 
 export async function getStaticProps({ params }) {
   const postData = await getPostData(params.id)
@@ -22,29 +23,31 @@ export async function getStaticPaths() {
   }
 }
 
-export default function Post({ postData }) {
+export default function Post(props) {
     return (
-      <Layout>
+      <Layout theme={props.theme} toggleTheme={props.toggleTheme}>
         <Head>
-          <title>{postData.title}</title>
+          <title>{props.postData.title}</title>
         </Head>
-        <Container fluid>
+        <Container fluid className={`${props.theme === "dark" ? 'bg-dark text-light' : 'bg-light text-dark'} py-4`}>
           <Row>
-            <Col md={{ span: 8, offset: 2 }}>
+            <Col md={{ span: 8, offset: 2 }} >
               <header className="mb-4">
-                <h1 className="font-weight-bold mb-0">{postData.title}</h1>
+                <h1 className="font-weight-bold mb-0">{props.postData.title}</h1>
                 <div className="font-weight-light small">
-                  <em><Date dateString={postData.date} /></em>
+                  <em><Date dateString={props.postData.date} /></em>
                 </div>
               </header>
               
-              <div className="jumbotron mb-3">
-                <h1>This is the cover image </h1>
+              <figure>
+                <Image src={`/images/Blogpost-thumb.jpg`} className="img img-fluid"/>
+              </figure>
+              <div style={{fontSize: "1.2rem"}}>
+                <div dangerouslySetInnerHTML={{ __html: props.postData.contentHtml }} />
               </div>
-              <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+              
             </Col>
           </Row>
-          
         </Container>
       </Layout>
     )

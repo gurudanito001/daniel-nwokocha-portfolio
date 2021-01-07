@@ -83,7 +83,7 @@ export default function Home( props ) {
                     <Row className="h-100">
                         <Col sm={{ span: 8, offset: 4 }} lg={{ span: 6, offset: 5 }} className={`d-none d-sm-flex align-items-center ${props.theme === "dark" ? 'text-light' : 'text-dark'}`}>
                             <Image src="/images/daniel-slim.png" className="ml-auto img img-fluid"  style={{ maxHeight: "500px" }} />
-                            <p className={styles.bannerText}>
+                            <p className={styles.bannerText} style={{marginLeft: "-3px"}}>
                                 <span style={{ fontSize: "50px" }}>Hi</span> <br />
                                 I<span style={{ fontSize: "45px" }}>'m Daniel</span><br />
                                 I<span style={{ fontSize: "40px" }}>'m a Writer</span><br />

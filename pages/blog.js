@@ -8,6 +8,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Image from 'react-bootstrap/Image'
 import { Container } from 'react-bootstrap'
+import {renderCategoryBlogPosts} from '../lib/renderCategoryBlogPosts'
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData()
@@ -21,8 +22,7 @@ export async function getStaticProps() {
 
 
 export default function Blog( props ) {
-
-  const renderCategoryBlogPosts = (category, theme) =>{
+ /*  const renderCategoryBlogPosts = (category, theme) =>{
     let count = 0;
     return props.allPostsData.map(postData =>{
       if(postData.category.includes(category) && count < 5 ){
@@ -63,8 +63,7 @@ export default function Blog( props ) {
         }
       }
     })
-    
-  }
+  } */
 
  
   return (
@@ -77,21 +76,21 @@ export default function Blog( props ) {
           <Row className="mb-3">
             <Col xs={12} md={4}>
               <header className="card-header p-2">
-                <h6 className="mb-0 font-weight-bold">Politics</h6>
+                <h6 className="mb-0 font-weight-bold">Category 1</h6>
               </header>
-              {renderCategoryBlogPosts("politics", props.theme === "dark")}
+              {renderCategoryBlogPosts("politics", props)}
             </Col>
             <Col xs={12} md={4}>
               <header className="card-header p-2">
-                <h6 className="mb-0 font-weight-bold">Business</h6>
+                <h6 className="mb-0 font-weight-bold">Category 2</h6>
               </header>
-              {renderCategoryBlogPosts("business", props.theme === "dark")}
+              {renderCategoryBlogPosts("business", props)}
             </Col>
             <Col xs={12} md={4}>
               <header className="card-header p-2">
-                <h6 className="mb-0 font-weight-bold">Local News</h6>
+                <h6 className="mb-0 font-weight-bold">Category 3</h6>
               </header>
-              {renderCategoryBlogPosts("health", props.theme === "dark")}
+              {renderCategoryBlogPosts("health", props)}
             </Col>
           </Row>
         </main>

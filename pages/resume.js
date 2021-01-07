@@ -10,7 +10,7 @@ import Image from 'react-bootstrap/Image'
 import ProgressBar from 'react-bootstrap/ProgressBar'
 import Link from 'next/link'
 
-export default function Showcase( props ) {
+export default function Resume( props ) {
     const [accordionOneOpen, setAccordionOneOpen] = useState(false);
     const [accordionTwoOpen, setAccordionTwoOpen] = useState(false);
     const [accordionThreeOpen, setAccordionThreeOpen] = useState(false);

@@ -32,20 +32,27 @@ export default function Post(props) {
         <Container fluid className={`${props.theme === "dark" ? 'bg-dark text-light' : 'bg-light text-dark'} py-4`}>
           <Row>
             <Col md={{ span: 8, offset: 2 }} >
-              <header className="mb-4">
-                <h1 className="font-weight-bold mb-0">{props.postData.title}</h1>
-                <div className="font-weight-light small">
+              <header className="mb-4 px-lg-5">
+                <h1 className="font-weight-bold mb-1">{props.postData.title}</h1>
+                <div className="font-weight-normal small">
                   <em><Date dateString={props.postData.date} /></em>
                 </div>
               </header>
               
-              <figure>
-                <Image src={`/images/Blogpost-thumb.jpg`} className="img img-fluid"/>
+              <figure className="px-lg-5">
+                <Image src={`/images/${props.postData.image}`} className="img img-fluid"/>
               </figure>
-              <div style={{fontSize: "1.2rem"}}>
+              <div style={{fontSize: "1.2rem"}} className="px-lg-5 mb-5">
                 <div dangerouslySetInnerHTML={{ __html: props.postData.contentHtml }} />
               </div>
-              
+              <div className="px-lg-5 d-flex align-items-end">
+                  <Image src={`/images/daniel-thumb.jpg`} roundedCircle className="img img-fluid border p-1"/>
+                  <p className="ml-2">
+                    <h5>Author</h5>
+                    <h4>Daniel Nwokocha</h4>
+                  </p>
+                  
+              </div>
             </Col>
           </Row>
         </Container>

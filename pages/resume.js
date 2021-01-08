@@ -11,13 +11,6 @@ import ProgressBar from 'react-bootstrap/ProgressBar'
 import Link from 'next/link'
 
 export default function Resume( props ) {
-    const [accordionOneOpen, setAccordionOneOpen] = useState(false);
-    const [accordionTwoOpen, setAccordionTwoOpen] = useState(false);
-    const [accordionThreeOpen, setAccordionThreeOpen] = useState(false);
-    const [accordionFourOpen, setAccordionFourOpen] = useState(false);
-
-    
-
   return (
     <>
         <Layout theme={props.theme} toggleTheme={props.toggleTheme}>
@@ -30,7 +23,7 @@ export default function Resume( props ) {
                     className={`card py-sm-5 my-sm-4 ${props.theme === "dark" ? 'bg-dark text-light' : 'bg-white text-dark'}`}>
                         <header className="row px-lg-5">
                             <figure className="col-4 col-md-2 order-1 d-flex flex-column justify-content-top px-1 px-sm-3">
-                                <img src="/images/profile.jpg" className="rounded-circle img img-fluid" style={{maxWidth: "110px", maxHeight: "110px"}}/>
+                                <img src="/images/daniel-thumb.jpg" className="rounded-circle img img-fluid" style={{maxWidth: "110px", maxHeight: "110px"}}/>
                             </figure>
                             <div className="col-md-7 order-3 order-md-2 d-none d-md-flex flex-column justify-content-top px-1 px-sm-3 text-center text-md-left">
                                 <h2>DANIEL NWOKOCHA</h2>
@@ -180,6 +173,10 @@ export default function Resume( props ) {
                                     </li>
                                     <li className="font-weight-bolder">
                                         ReactJs<br/>
+                                        <ProgressBar variant="primary" now={60} />
+                                    </li>
+                                    <li className="font-weight-bolder">
+                                        NextJs<br/>
                                         <ProgressBar variant="primary" now={60} />
                                     </li>
                                     <li className="font-weight-bolder">

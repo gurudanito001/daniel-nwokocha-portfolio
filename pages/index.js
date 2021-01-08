@@ -1,63 +1,27 @@
-import Head from 'next/head'
-import React, { useState, useEffect } from 'react';
-import Layout, { siteTitle } from '../components/layout'
-import { getSortedPostsData } from '../lib/posts'
-import styles from '../styles/utils.module.css'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Container from 'react-bootstrap/Container'
-import Image from 'react-bootstrap/Image'
-import Link from 'next/link'
-import Carousel from 'react-bootstrap/Carousel'
-import Accordion from 'react-bootstrap/Accordion'
-import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
+import Head from 'next/head';
+import React, { useState } from 'react';
+import Layout, { siteTitle } from '../components/layout';
+import { getSortedPostsData } from '../lib/posts';
+import { renderBlogPosts, carouselItems } from '../lib/renderedComponents';
+import styles from '../styles/utils.module.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Image from 'react-bootstrap/Image';
+import Link from 'next/link';
+import Carousel from 'react-bootstrap/Carousel';
+import Accordion from 'react-bootstrap/Accordion';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 
-export async function getStaticProps(props) {
+export async function getStaticProps() {
   const allPostsData = getSortedPostsData()
   return {
     props: {
       allPostsData
     }
   }
-}
-
-const carouselItems = (images, projectName, screenSize)=>{
-    return images[projectName].map(imageUrl =>{
-        if(imageUrl.includes(screenSize)){
-            return(
-                <Carousel.Item key={imageUrl}>
-                    <Image src={`/images/${imageUrl}`} className="img img-fluid" style={{ maxHeight: "500px" }} />
-                </Carousel.Item>
-            )
-        }
-    })
-}
-
-const renderBlogPosts = (allPostsData, startNum, theme) => {
-    let count = startNum;
-    return allPostsData.map(postData =>{
-        count += 1
-        if(count - startNum <= 5 ){
-            return(
-                <Row key={allPostsData[count-1].id}>
-                    <Col xs={3}>
-                        <figure>
-                            <Image src={`/images/Blogpost-thumb.jpg`} className="img img-fluid"/>
-                        </figure>
-                    </Col>
-                    <Col xs={9}>
-                        <figcaption className="h6">
-                            <Link href={`/posts/${allPostsData[count-1].id}`}>
-                                <a className={`${theme ? 'text-light' : 'text-dark'}`}>{allPostsData[count-1].title}</a>
-                            </Link>
-                        </figcaption>
-                    </Col>
-                </Row>
-            )
-        }
-    })
 }
 
 
@@ -120,20 +84,18 @@ export default function Home( props ) {
                         </Col>
                         <Col md={12} className={`pt-2 ${props.theme === "dark" ? 'bg-dark' : 'bg-light'}`}>
                             <article className="row">
+                                <h5 className="col-md-11 col-lg-10">
+                                    How I got into programming and my journey ever since
+                                </h5>
+
                                 <p className="col-md-11 col-lg-10">
-                                    This is my Story. I'm about to tell how I got into programming and my journey ever since.
-                            </p>
-                                <h6 className="col-md-11 col-lg-10">First contact with Programming</h6>
+                                It was 2012, I was in my final year in secondary school. A time when everyone seemed to have a clear picture of how they would spend their next five years in the university. Everyone except me. Don't get me wrong, I have always liked education, I just didn't like school, if that makes any sense. The Nigerian education system seemed to me like a lottery. You gamble five or more years of your life and hope to join the queue of over 25 million graduates and get a job instantly. The quality of education available in nigerian universities hardly prepares graduates for real life challenges. I didn't want to join the queue. I wanted to do something I loved instead. I just didn't know what.
+                                </p>
                                 <p className="col-md-11 col-lg-10">
-                                    I was in secondary school at that time about to write my final year exams. It was a time where everyone
-                                    talked about their big dreams, their career choices (doctors, lawyers, pilots), everyone seemed to know
-                                how they would be spending the next five to six years, everyone except me. <br />
-                                    I didn't exactly know of any career that interested me except I wanted to be a poet. But I didn't tell anyone.
-                                Nobody wanted to hear that. I loved education, I loved to learn, but I didn't like the school system in Nigeria. It
-                                was turture for me so I didn't want to go to the university
-                            </p>
-                                <p className="col-md-11 col-lg-10">
-                                    <a>Read More</a>
+                                    <Link href="/posts/my-story">
+                                        <a>Read More</a>
+                                    </Link>
+                                    
                                 </p>
                             </article>
                         </Col>
@@ -269,7 +231,7 @@ export default function Home( props ) {
                     <Row>
                         <Col xs={12}>
                             <header>
-                                <h3 className={`${props.theme === "dark" ? 'text-light' : 'text-dark'}`}>Blog</h3>
+                                <h3 className={`${props.theme === "dark" ? 'text-light' : 'text-dark'} mb-3`}>Blog</h3>
                             </header>
                         </Col>
                         <Col sm={6}>

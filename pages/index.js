@@ -82,7 +82,7 @@ export default function Home( props ) {
                 <Container fluid className={`${props.theme === "dark" ? styles.bannerImageDark : styles.bannerImageLight} mb-5`}>
                     <Row className="h-100">
                         <Col sm={{ span: 8, offset: 4 }} lg={{ span: 6, offset: 5 }} className={`d-none d-sm-flex align-items-center ${props.theme === "dark" ? 'text-light' : 'text-dark'}`}>
-                            <Image src="/images/daniel-slim.png" className="ml-auto img img-fluid"  style={{ maxHeight: "500px" }} />
+                            <Image src="/images/banner-img.png" className="ml-auto img img-fluid"  style={{ maxHeight: "500px" }} />
                             <p className={styles.bannerText} style={{marginLeft: "-3px"}}>
                                 <span style={{ fontSize: "50px" }}>Hi</span> <br />
                                 I<span style={{ fontSize: "45px" }}>'m Daniel</span><br />
@@ -95,7 +95,7 @@ export default function Home( props ) {
                             </p>
                         </Col>
                         <Col xs={12} sm={{ span: 9, offset: 3 }} className={`d-flex d-sm-none align-items-center ${props.theme === "dark" ? 'text-light' : 'text-dark'}`}>
-                            <Image src="/images/daniel-slim.png" className="ml-auto" style={{ maxWidth: "100px" }} />
+                            <Image src="/images/banner-img.png" className="ml-auto" style={{ maxWidth: "100px" }} />
                             <p className={styles.bannerText} style={{ fontSize: "40px" }}>
                                 <span style={{ fontSize: "40px" }}>Hi</span> <br />
                                 I<span style={{ fontSize: "35px" }}>'m Daniel</span><br />

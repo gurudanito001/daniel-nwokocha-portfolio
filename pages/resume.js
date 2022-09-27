@@ -19,7 +19,7 @@ export default function Resume( props ) {
             </Head>
             <Container fluid className={`${props.theme === 'dark' ? 'bg-dark' : 'bg-light'}`}>
                 <Row>
-                    <Col md={{ span: 10, offset: 1}} lg={{ span: 8, offset: 2}} style={{boxShadow: '-2px 2px 12px -4px rgba(0,0,0,0.75)'}}
+                    <Col md={{ span: 12,}} lg={{ span: 10, offset: 1}} style={{boxShadow: '-2px 2px 12px -4px rgba(0,0,0,0.75)'}}
                     className={`card py-sm-5 my-sm-4 ${props.theme === "dark" ? 'bg-dark text-light' : 'bg-white text-dark'}`}>
                         <header className="row px-lg-5">
                             <figure className="col-4 col-md-2 order-1 d-flex flex-column justify-content-top px-1 px-sm-3">
@@ -157,43 +157,34 @@ export default function Resume( props ) {
                                 <ul className="list-unstyled">
                                     <li className="font-weight-bolder">
                                         HTML<br/>
-                                        <ProgressBar variant="primary" now={80} />
                                     </li>
                                     <li className="font-weight-bolder">
                                         CSS<br/>
-                                        <ProgressBar variant="primary" now={80} />
+                                        {/* <ProgressBar variant="primary" now={80} /> */}
                                     </li>
                                     <li className="font-weight-bolder">
                                         Bootstrap<br/>
-                                        <ProgressBar variant="primary" now={80} />
                                     </li>
                                     <li className="font-weight-bolder">
                                         Javascript<br/>
-                                        <ProgressBar variant="primary" now={60} />
                                     </li>
                                     <li className="font-weight-bolder">
                                         ReactJs<br/>
-                                        <ProgressBar variant="primary" now={60} />
                                     </li>
                                     <li className="font-weight-bolder">
                                         NextJs<br/>
-                                        <ProgressBar variant="primary" now={60} />
                                     </li>
                                     <li className="font-weight-bolder">
                                         Typescript<br/>
-                                        <ProgressBar variant="primary" now={40} />
                                     </li>
                                     <li className="font-weight-bolder">
                                         NodeJs<br/>
-                                        <ProgressBar variant="primary" now={60} />
                                     </li>
                                     <li className="font-weight-bolder">
                                         C#<br/>
-                                        <ProgressBar variant="primary" now={40} />
                                     </li>
                                     <li className="font-weight-bolder">
                                         Mongodb<br/>
-                                        <ProgressBar variant="primary" now={60} />
                                     </li>
                                 </ul>
                             </aside>

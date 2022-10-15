@@ -10,7 +10,7 @@ const ProjectModal = ({open, onClose, projectIndex}) =>{
       openModal={open}
       onClose={onClose}
     >
-      <header className="py-4 mb-5 d-flex align-items-center container">
+      <header className="py-4 mb-5 container">
         <h4 className="m-0 mr-3">{projects[projectIndex]["name"]}</h4> 
         <a href={`${projects[projectIndex]["url"]}`} target="_blank">{projects[projectIndex]["url"]}</a>
       </header>

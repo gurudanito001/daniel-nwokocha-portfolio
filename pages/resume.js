@@ -20,44 +20,36 @@ export default function Resume( props ) {
             <Container fluid className={`${props.theme === 'dark' ? 'bg-dark' : 'bg-light'}`}>
                 <Row>
                     <Col md={{ span: 12,}} lg={{ span: 10, offset: 1}} style={{boxShadow: '-2px 2px 12px -4px rgba(0,0,0,0.75)'}}
-                    className={`card py-sm-5 my-sm-4 ${props.theme === "dark" ? 'bg-dark text-light' : 'bg-white text-dark'}`}>
-                        <header className="row px-lg-5">
-                            <figure className="col-4 col-md-2 order-1 d-flex flex-column justify-content-top px-1 px-sm-3">
-                                <img src="/images/daniel-thumb.jpg" className="rounded-circle img img-fluid" style={{maxWidth: "110px", maxHeight: "110px"}}/>
-                            </figure>
-                            <div className="col-md-7 order-3 order-md-2 d-none d-md-flex flex-column justify-content-top px-1 px-sm-3 text-center text-md-left">
-                                <h2>DANIEL NWOKOCHA</h2>
-                                <h5>FULL STACK JAVASCRIPT DEVELOPER</h5>
-                                <h6>Mongodb, Nodejs, Reactjs, NextJs</h6>
+                    className={`card my-sm-4`}>
+                        <header className="row p-lg-5 text-white" style={{background: "#5EA1DF"}}>
+                            <div className='col-7 d-flex align-items-center'>
+                                <img src="/images/logo.svg" width="150px" />
+                                <div className='ml-3'>
+                                    <h2 className='mb-0'>DANIEL</h2>
+                                    <h2>NWOKOCHA</h2>
+                                    <h5>Full Stack Developer</h5>
+                                </div>
                             </div>
-
-                            <div className="col-md-7 order-3 order-md-2 d-flex d-md-none flex-column justify-content-top px-1 px-sm-3">
-                                <h4>DANIEL NWOKOCHA</h4>
-                                <h6>FULL STACK JAVASCRIPT DEVELOPER</h6>
-                                <strong className="d-block">Mongodb, Nodejs, Reactjs, NextJs</strong>
-                            </div>
-
-
-                            <div className="col-8 col-md-3 order-2 order-md-3 d-flex flex-column justify-content-top px-1 px-md-0">
-                                <ul className="list-unstyled font-weight-bolder" style={{ fontSize: ".9rem"}}>
-                                    <li className="d-flex align-items-center mb-1">
-                                        <Image src={`/images/github${props.theme === "dark" ? '-light': ''}.svg`} width="15px" className="mr-1"/>
-                                        <a href="https://github.com/gurudanito001" className={`${props.theme === "dark" ? 'text-light': 'text-dark'}`}>gurudanito001</a>
-                                    </li>
-                                    <li className="d-flex align-items-center mb-1">
-                                        <Image src={`/images/twitter${props.theme === "dark" ? '-light': ''}.svg`} width="15px" className="mr-1"/>
-                                        <a href="https://twitter.com/danielnwokocha9" className={`${props.theme === "dark" ? 'text-light': 'text-dark'}`}>DanielNwokocha9</a>
-                                    </li>
-                                    <li className="d-flex align-items-center mb-1">
-                                        <Image src={`/images/gmail${props.theme === "dark" ? '-light': ''}.svg`} width="15px" className="mr-1"/>
-                                        <span className={`${props.theme === "dark" ? 'text-light': 'text-dark'}`}>gurudanito001@gmail.com</span>
-                                    </li>
-                                    <li className="d-flex align-items-center">
-                                        <Image src={`/images/phone-call${props.theme === "dark" ? '-light': ''}.svg`} width="15px" className="mr-1"/>
-                                        <span className={`${props.theme === "dark" ? 'text-light': 'text-dark'}`}>+2348140715723</span>
-                                    </li>
-                                </ul>
-                            </div>
+                              <div className='col-5 d-flex align-items-end'>
+                                  <ul className="list-unstyled font-weight-bolder text-white" style={{ fontSize: ".9rem" }}>
+                                      <li className="d-flex align-items-center mb-1">
+                                          <Image src={`/images/github${props.theme === "dark" ? '-light' : ''}.svg`} width="15px" className="mr-1" />
+                                          <a href="https://github.com/gurudanito001" className={`text-white`}>gurudanito001</a>
+                                      </li>
+                                      <li className="d-flex align-items-center mb-1">
+                                          <Image src={`/images/twitter${props.theme === "dark" ? '-light' : ''}.svg`} width="15px" className="mr-1" />
+                                          <a href="https://twitter.com/danielnwokocha9" className={`text-white`}>DanielNwokocha9</a>
+                                      </li>
+                                      <li className="d-flex align-items-center mb-1">
+                                          <Image src={`/images/gmail${props.theme === "dark" ? '-light' : ''}.svg`} width="15px" className="mr-1" />
+                                          <span className={`text-white`}>gurudanito001@gmail.com</span>
+                                      </li>
+                                      <li className="d-flex align-items-center">
+                                          <Image src={`/images/phone-call${props.theme === "dark" ? '-light' : ''}.svg`} width="15px" className="mr-1" />
+                                          <span className={`text-white`}>+2348140715723</span>
+                                      </li>
+                                  </ul>
+                              </div>
                         </header>
 
 

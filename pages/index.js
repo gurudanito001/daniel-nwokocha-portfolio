@@ -16,6 +16,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { ArrowForward } from '@material-ui/icons';
 import ProjectModal from '../components/projectModal';
+import { TouchApp } from '@material-ui/icons';
 
 export async function getStaticProps() {
     const allPostsData = getSortedPostsData()
@@ -61,7 +62,9 @@ export default function Home(props) {
                                         I’m Daniel Nwokocha <br /> <span style={{ color: "#273A69" }}>Full Stack</span> Developer
                                     </h3>
                                     <p className={`mt-4 pr-md-5 mr-md-5 ${styles.heroLeadText}`}>
-                                        <span className='lead'>I am a fullstack Developer. Javascript Framework, Python Framework.<br /></span>
+                                        Javascript | TypeScript | NodeJs | SQL | Python ...
+                                    </p>
+                                    <p style={{fontSize: "18px"}}>
                                         I also write blogs and poems in my free time.
                                         I love to automate the way things work and Yes, I love AI and Machine learning.
                                     </p>
@@ -88,9 +91,11 @@ export default function Home(props) {
                                 <header>
                                     <h3>Showcase</h3>
                                 </header>
-                                <p className="lead">
-                                    The following is a list of some of the public projects I've built or made major contributions to during the course of my career.
-                                    Click on a card to view screenshots of the live project.
+                                <p style={{fontSize: "18px"}}>
+                                    Below are some of my most impressive projects.
+                                </p>
+                                <p className='font-weight-bold text-dark'>
+                                    <span style={{color: "orangered"}} >Click<TouchApp/></span> on a Card to view project details
                                 </p>
                             </Col>
                         </Row>

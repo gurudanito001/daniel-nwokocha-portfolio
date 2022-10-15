@@ -2,22 +2,24 @@ import Link from "next/dist/client/link";
 
 const Navbar = (props) => {
   return (
-    <nav class="navbar navbar-expand-md navbar-light bg-white sticky-top py-3">
-      <a class="navbar-brand h6 m-0" href="/">{`<Daniel Nwokocha />`} </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav d-flex align-items-center">
-          <li class="nav-item ml-5 text-dark">
-            <a href="/resume" className="nav-link font-weight-bold">Resume</a>
-          </li>
-          <li class="nav-item mx-3 text-dark">
-            <a href="/blog" className="nav-link font-weight-bold">Blog</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+      <nav className="container-fluid d-flex align-items-center bg-white sticky-top py-3">
+        <div className="container d-flex align-items-center">
+          <a className="navbar-brand h6 m-0 text-dark d-flex align-items-center" href="/">
+            <img src="/images/logo.svg" height="30px" /> <span style={{ color: "#273A69" }} className="ml-2 d-none d-md-inline h4  font-weight-bold mb-0">Daniel Nwokocha</span>
+          </a>
+          <div className="">
+            <ul className="d-flex list-unstyled align-items-center m-0">
+              <li className="ml-4 mx-1">
+                <a href="/resume" className="nav-link font-weight-bold" style={{ color: "#273A69" }}>Resume</a>
+              </li>
+              <li className="mx-1">
+                <a href="/blog" className="nav-link font-weight-bold" style={{ color: "#273A69" }}>Blog</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    
 
   )
 }

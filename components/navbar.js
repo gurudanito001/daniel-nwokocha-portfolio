@@ -10,7 +10,7 @@ const Navbar = (props) => {
           <div className="">
             <ul className="d-flex list-unstyled align-items-center m-0">
               <li className="ml-4 mx-1">
-                <a href="/resume" className="nav-link font-weight-bold" style={{ color: "#273A69" }}>Resume</a>
+                <a href="https://docs.google.com/document/d/16btYtYfm_g6DrL-KwDnDZTnyMR30fy0OYAQLpUkyb84" target="_blank" className="nav-link font-weight-bold" style={{ color: "#273A69" }}>Resume</a>
               </li>
               <li className="mx-1">
                 <a href="/blog" className="nav-link font-weight-bold" style={{ color: "#273A69" }}>Blog</a>

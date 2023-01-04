@@ -69,7 +69,7 @@ export default function Home(props) {
                                         I love to automate the way things work and Yes, I love AI and Machine learning.
                                     </p>
                                     <div className='mt-4'>
-                                        <button className={`btn ${styles.heroLeadBtn}`}>Hire Me <ArrowForward style={{ height: "16px" }} /></button>
+                                        <a href="https://linkedin.com/in/daniel-nwokocha/" target="_blank" className={`btn ${styles.heroLeadBtn} d-flex align-items-center`}><span className='ml-auto'>Hire Me</span> <ArrowForward className='mr-auto' style={{ height: "16px" }} /></a>
                                     </div>
                                 </div>
 

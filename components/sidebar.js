@@ -1,5 +1,6 @@
 import { Twitter, GitHub, Email, LinkedIn, CheckCircle, } from "@material-ui/icons";
 import { IconButton } from "@material-ui/core";
+
 const Sidebar = () =>{
 
 
@@ -10,10 +11,10 @@ const Sidebar = () =>{
         <h5 className="my-1">Daniel Nwokocha</h5>
         <span className="h6 text-secondary font-weight-normal">Full Stack Developer</span>
         <ul className="list-unstyled d-flex mb-0" style={{width: "250px"}}>
-          <li className="mr-auto"> <IconButton> <Email style={{height: "20px"}} /></IconButton></li>
-          <li className="mr-auto"> <IconButton> <GitHub style={{height: "20px"}} /></IconButton></li>
-          <li className="mr-auto"> <IconButton> <Twitter style={{height: "20px"}} /></IconButton></li>
-          <li className="mr-auto"> <IconButton> <LinkedIn style={{height: "20px"}} /></IconButton></li>
+          <a className="mr-auto" href="mailto:gurudanito001@gmail.com"> <IconButton > <Email style={{height: "20px"}} /></IconButton></a>
+          <a className="mr-auto" href="https://github.com/gurudanito001" target="_blank"> <IconButton> <GitHub style={{height: "20px"}} /></IconButton></a>
+          <a className="mr-auto" href="https://twitter.com/iamnotstopping" target="_blank"> <IconButton> <Twitter style={{height: "20px"}} /></IconButton></a>
+          <a className="mr-auto" href="https://linkedin.com/in/daniel-nwokocha/" target="_blank"> <IconButton> <LinkedIn style={{height: "20px"}} /></IconButton></a>
         </ul>
       </div>
 
